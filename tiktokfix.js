@@ -1,17 +1,15 @@
+// Pattern, Background service is only active on sites matching this pattern
 let pattern = "*://*.tiktok.com/*";
 
-// redirect function
-
-// returns an object with a property `redirectURL`
-// set to the new URL
-
 function cleanURL(requestDetails) {
+    // Create a new URL object and return it without the link trackers in the query string
     const url = new URL(requestDetails.url);
     url.search = "";
     return {redirectUrl: url.href};
   }
 
 function redirect(requestDetails) {
+    // If the URL has a query string, Send it to clean url, if not return the URL unaltered.
     if (requestDetails.url.includes("?")) {
         console.log(`Redirecting: ${requestDetails.url}`);
 
@@ -24,7 +22,7 @@ function redirect(requestDetails) {
 }
 
 // add the listener,
-// passing the filter argument and "blocking"
+// passing the function, filter argument and "blocking"
 browser.webRequest.onBeforeRequest.addListener(
     redirect,
   { urls: [pattern]},
