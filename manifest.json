@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "TikTokShareFix",
+    "version": "1.0",
+
+    "description": "This extension allows you to view TikToks other people send you if you don't have an account.",
+
+    "icons": {
+    },
+
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "*://*.tiktok.com/*"
+      ],
+
+    "background":{
+        "scripts": ["tiktokfix.js"]
+    }
+  }
